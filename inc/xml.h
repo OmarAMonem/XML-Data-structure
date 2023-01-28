@@ -44,6 +44,7 @@ public:
     }
 
     string XMLToJson(int level = 0, Node *parent = nullptr);    
+    string prettify(int level = 0, Node *parent = nullptr);   
 };
 
 /*****************************************************************
