@@ -20,6 +20,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_pushButton_clicked()
+{
+    QString text = ui->plainTextEdit_2->toPlainText();
+    ui->plainTextEdit->setPlainText(text);
+}
+
 void MainWindow::on_pushButton_2_clicked()
 {
     QString file_name = QFileDialog::getOpenFileName(this, "Select a file", "C://");

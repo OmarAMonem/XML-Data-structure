@@ -75,7 +75,7 @@
       <item>
        <widget class="QPushButton" name="pushButton">
         <property name="text">
-         <string>Clear</string>
+         <string>Swap</string>
         </property>
        </widget>
       </item>
