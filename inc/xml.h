@@ -1,5 +1,5 @@
-#ifndef XML_TO_JSON_H
-#define XML_TO_JSON_H
+#ifndef XML_H
+#define XML_H
 
 #include <iostream>
 #include <string>
@@ -159,5 +159,12 @@ Tree parse(string input_string)
     }
     return xml_tree; // return pointer to the tree
 }
+
+
+/*****************************************************************
+*                       XML Validation Functions                 *
+*               Function to validate XML is correct              *
+*****************************************************************/
+string validate(string x);
 
 #endif

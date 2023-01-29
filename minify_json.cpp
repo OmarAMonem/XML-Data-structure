@@ -52,7 +52,7 @@ string Tree::XMLToJson(int level, Node *parent)
     return "{\n" + output + "\n" + temp + "}";
 }
 
-
+/*
 int main()
 {
     freopen("./output/XML_JSON.json", "w", stdout);
@@ -75,3 +75,4 @@ int main()
     freopen("./output/minify.txt", "w", stdout);
     cout << minify(x);
 }
+*/

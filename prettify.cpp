@@ -1,4 +1,4 @@
-#include "xml.h"
+#include "./inc/xml.h"
 #define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
@@ -58,26 +58,4 @@ string Tree::prettify(int level, Node* parent)
     }
 
     return output + "\n" + temp + "</" + parent->key + ">"  ;
-}
-
-int main()
-{
-    freopen("prettify.xml", "w", stdout);
-    ifstream file;
-    file.open("minify.txt");
-    if (!file.is_open())
-    {
-        cout << "Unable to open the file." << endl;
-        return 0;
-    }
-    string line, x;
-    while (getline(file, line))
-    {
-        x = x + line;
-    }
-
-    file.close();
-    Tree t = parse(x);
-    string Result = t.prettify();
-    cout << Result;
 }

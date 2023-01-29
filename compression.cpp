@@ -1,4 +1,4 @@
-#include "Compression.h"
+#include "./inc/Compression.h"
 
 using namespace std;
 
@@ -91,38 +91,4 @@ vector<uint8_t> toBinary(string const& binStr)
 		pos += 24;
 	}
 	return result;
-}
-
-void compress(string& str)
-{
-	ofstream fout("my_output.txt");
-	if (fout.fail())
-	{
-		cout << "Can't open the file.\n";
-		return;
-	}
-	string coded = Huffman_encoding(str);
-	auto bin = toBinary(coded);
-	for (auto i : bin)
-	{
-		fout << static_cast<uint8_t>(i) << " ";
-	}
-}
-
-int main()
-{
-	string str;
-	string path = "notes.txt";
-	fstream file_handler(path.c_str());
-	if (file_handler.fail())
-	{
-		cout << "Can't open the file.\n";
-		return 0;
-	}
-	string line;
-	while (getline(file_handler, line))
-		str = line;
-	file_handler.close();
-	compress(str);
-	return 0;
 }

@@ -1,32 +1,15 @@
-
-
 #include <iostream>
 #include <stack>
 #include <vector>
 #include <fstream>
 #include <cstdlib>
-#include "xml.h"
+#include "./inc/xml.h"
 using namespace std;
 
-bool validate(string uncorrected_file){
+string validate(string x){
     stack<string> Stack;
     int j ,k ;
     string y ;
-    bool flag=false ;
-    ifstream file;
-    file.open(uncorrected_file);
-    if (!file.is_open())
-    {
-        cout << "Unable to open the file." << endl;
-        return 0;
-    }
-    string line, x ="";
-    while (getline(file, line))
-    {
-        line += "\n" ;
-        x+=line ;                                    //convert the file into a string
-    }
-    file.close();
     for(int i = 0; x[i] != '\0'; i++)
     {
         if (x[i] == '<' && x[i + 1] != '/')         // finding opening tag
@@ -41,7 +24,6 @@ bool validate(string uncorrected_file){
 
             if(Stack.empty()){                    // in case there is a closing tag without an opening tag
                 x.erase(i,k-i+1);
-                flag=true ;
             }
             else if (y == Stack.top())            //check if the closing tag name is the same as that of the opening in the stack
             {
@@ -49,24 +31,15 @@ bool validate(string uncorrected_file){
             }else{
                 x.replace(i+2,k-(i+2), Stack.top()); // if not replace the closing tag by an opening one
                 Stack.pop();
-                flag=true ;
             }
 
         }
     }
-    freopen("corrected_file.xml", "w", stdout);
-    cout<<x ;
-    freopen("CON","w",stdout);
-    return flag;
-
+    while(!Stack.empty())
+    {
+        x += "</" + Stack.top() + ">";
+        Stack.pop();
+        x += "\n";
+    }
+    return x;
 }
-
-
-
-int main()
-{
-    bool x =validate("sample.xml") ;
-    cout<<x ;
-
-}
-

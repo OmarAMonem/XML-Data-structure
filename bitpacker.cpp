@@ -1,5 +1,5 @@
 #include <QByteArray>
-#include "bitpacker.h"
+#include "./inc/bitpacker.h"
 
 void BitPacker ::operator+=(const string& s) {
     for (auto c : s) {
