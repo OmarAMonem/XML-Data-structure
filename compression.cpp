@@ -77,19 +77,18 @@ string Huffman_encoding(string text)
 	return encoded;
 }
 
-vector<uint8_t> toBinary(std::string const& binStr)
+vector<uint8_t> toBinary(string const& binStr)
 {
-	std::vector<uint8_t> result;
-	result.reserve(binStr.size() / 8);
+	vector<uint8_t> result;
+	result.reserve(binStr.size() / 24);
 	size_t pos = 0;
 	size_t len = binStr.length();
 	while (pos < len)
 	{
-		size_t curLen = std::min(static_cast<size_t>(8), len - pos);
-		auto curStr = binStr.substr(pos, curLen) + std::string(8 - curLen, '0');
-		std::cout << "curLen: " << curLen << ", curStr: " << curStr << "\n";
-		result.push_back(std::stoi(curStr, 0, 2));
-		pos += 8;
+		size_t curLen = min(static_cast<size_t>(24), len - pos);
+		auto curStr = binStr.substr(pos, curLen) + string(24 - curLen, '0');
+		result.push_back(stoi(curStr, 0, 2));
+		pos += 24;
 	}
 	return result;
 }
@@ -125,7 +124,5 @@ int main()
 		str = line;
 	file_handler.close();
 	compress(str);
-
-	uint8_t ch = 'ø';
 	return 0;
 }
