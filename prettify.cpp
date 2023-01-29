@@ -1,4 +1,4 @@
-#include "./inc/xml.h"
+#include "xml.h"
 #define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 

@@ -3,7 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <cstdlib>
-#include "./inc/xml.h"
+#include "xml.h"
 using namespace std;
 
 string validate(string x){

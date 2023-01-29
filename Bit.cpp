@@ -1,4 +1,4 @@
-#include "./inc/Bit.h"
+#include "Bit.h"
 
 auto to_bit_stream(const string& bytes)
 {

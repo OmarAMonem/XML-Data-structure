@@ -1,4 +1,4 @@
-#include "./inc/xml.h"
+#include "xml.h"
 
 using namespace std;
 
