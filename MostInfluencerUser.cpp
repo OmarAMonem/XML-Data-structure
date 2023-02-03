@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-using namespace std;
+#include "Graph.h"
 
 //This function finds the node with the most followers in a social network represented by an adjacency matrix.
 int getMostInfluencerUser(vector<vector<int>> adjacencyMatrix) {
