@@ -4,12 +4,17 @@
 #include <queue>
 #include <map>
 #include <fstream>
+#include <bitset>
 
 using namespace std;
 
+// A Huffman tree node
 struct MinHeapNode {
+	// One of the input characters
 	char data;
+	// Frequency of the character
 	unsigned freq;
+	// Left and right child of this node
 	MinHeapNode* left, * right;
 
 	MinHeapNode(char data, unsigned freq)
@@ -22,6 +27,7 @@ struct MinHeapNode {
 
 MinHeapNode* main_root;
 
+// For comparison of two heap nodes (needed in min heap)
 struct compare {
 
 	bool operator()(MinHeapNode* l, MinHeapNode* r)
