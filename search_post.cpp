@@ -1,12 +1,8 @@
-#include <iostream>
-#include <stack>
-#include <vector>
-#include <fstream>
-#include <cstdlib>
-#include "xml.h"
-using namespace std;
+#include "Graph.h"
+#include <stdbool.h>
 
 
+// Fills lps[] for given pattern pat[0..M-1]
 void computeLPSArray(string pat, int M, int* lps)
 {
     // length of the previous longest prefix suffix
@@ -17,20 +13,23 @@ void computeLPSArray(string pat, int M, int* lps)
     // the loop calculates lps[i] for i = 1 to M-1
     int i = 1;
     while (i < M) {
-        if (pat[i] == pat[len])
-        {
+        if (pat[i] == pat[len]) {
             len++;
             lps[i] = len;
             i++;
         }
-        else 
+        else // (pat[i] != pat[len])
         {
-     
-            if (len != 0)
-            {
+            // This is tricky. Consider the example.
+            // AAACAAAA and i = 7. The idea is similar
+            // to search step.
+            if (len != 0) {
                 len = lps[len - 1];
+
+                // Also, note that we do not increment
+                // i here
             }
-            else 
+            else // if (len == 0)
             {
                 lps[i] = 0;
                 i++;
@@ -39,6 +38,8 @@ void computeLPSArray(string pat, int M, int* lps)
     }
 }
 
+
+// Prints occurrences of txt[] in pat[]
 bool KMPSearch(string pat, string txt)
 {
     const char* patt = pat.c_str();
@@ -81,27 +82,26 @@ bool KMPSearch(string pat, string txt)
     delete[] lps;
     return false;
 }
-
-
+// function to search for a given word in all the posts 
 vector<Post*> Post_Search(string word, vector<Post*> Posts)
 {
-    int n = Posts.size();
-    vector<Post*> posts_found;
-    for (int i = 0; i < n; i++)
+    int n = Posts.size();   
+    vector<Post*> posts_found;  //the vector which will be returned that contains the posts that carry the word we want to search
+    for (int i = 0; i < n; i++)  //loop over all the posts
     {
-        if (KMPSearch(word, Posts[i]->Body))
+        if (KMPSearch(word, Posts[i]->Body))  //check if the word is in a body of the post 
         {
-            posts_found.push_back(Posts[i]);
+            posts_found.push_back(Posts[i]);  //add the reference to the post in the returned vector
         }
         else
         {
-            for (int j = 0; j < Posts[i]->Topics.size(); j++)
+            for (int j = 0; j < Posts[i]->Topics.size(); j++)    //loop on topics in a given post
             {
                 
-                if (word == Posts[i]->Topics[j])
+                if (word == Posts[i]->Topics[j])      //check if the word exists in the topics
                 {
-                    posts_found.push_back(Posts[i]);
-                    break;
+                    posts_found.push_back(Posts[i]);  //add the reference to the post in the returned vector
+                    break;          
                 }
             }
         }
