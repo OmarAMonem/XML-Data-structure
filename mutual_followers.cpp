@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-using namespace std;
+#include "Graph.h"
 
 // The method takes the first user ID, the second user ID, 
 // and the adjacency matrix which represents the graph of the XML file as parameters
