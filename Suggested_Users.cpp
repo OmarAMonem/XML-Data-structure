@@ -16,7 +16,7 @@ vector<int> get_suggested_users(int id, vector<vector<int>> adjacencyMatrix) {
     sort(suggested_users.begin(), suggested_users.end());  //sorting the Vector
     suggested_users.erase(unique(suggested_users.begin(), suggested_users.end()), suggested_users.end()); //removing the Duplicates From the Suggested Users
     
-    for (int i = 0; i < suggested_users.size(); i++)
+    for (int i = 0; i < suggested_users.size(); i++)  //checking if the suggested users obtained are from the followers and add them to the result
     {
         flag = 0;
         for (int j = 0; j < followers.size(); j++)
