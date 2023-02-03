@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-using namespace std;
+#include "Graph.h"
 
 //This is a Function that takes the Id of a certain user and returns a lists of Suggested Users
 vector<int> get_suggested_users(int id, vector<vector<int>> adjacencyMatrix) {
