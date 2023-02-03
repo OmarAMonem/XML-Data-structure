@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-using namespace std;
+#include "Graph.h"
 
 //This function finds the node with the most follows in a social network represented by an adjacency matrix.
 int getMostActiveUser(vector<vector<int>> adjacencyMatrix) {
