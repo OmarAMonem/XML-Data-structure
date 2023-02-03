@@ -139,7 +139,7 @@ void MainWindow::on_pushButton_10_clicked(){ // Post Search
     ui->plainTextEdit_2->setPlainText(Result);
 }
 
-void MainWindow::on_pushButton_11_clicked(){ // Most Active
+void MainWindow::on_pushButton_11_clicked(){ // Most Influencer
     QString text = ui->plainTextEdit->toPlainText();
     string x = text.toStdString();
     Graph g = Graph_Parse(x);
@@ -151,7 +151,7 @@ void MainWindow::on_pushButton_11_clicked(){ // Most Active
     ui->plainTextEdit_2->setPlainText(Result);
 }
 
-void MainWindow::on_pushButton_12_clicked(){ // Most Influencer
+void MainWindow::on_pushButton_12_clicked(){ // Most Active
     QString text = ui->plainTextEdit->toPlainText();
     string x = text.toStdString();
     Graph g = Graph_Parse(x);
@@ -178,7 +178,7 @@ void MainWindow::on_pushButton_13_clicked(){ // People you may know
             output +="\nList of People you may know: \n";
             for (int j : people_u_may_know)
             {
-                output += "        User of Id : " + g.users[j]->id + "\n";
+                output += "        User of Id: " + g.users[j]->id + ", Name: " + g.users[j]->name + "\n";
             }
         }
         else
@@ -193,7 +193,7 @@ void MainWindow::on_pushButton_13_clicked(){ // People you may know
     ui->plainTextEdit_2->setPlainText(Result);
 }
 
-void MainWindow::on_pushButton_14_clicked(){ // Post Search
+void MainWindow::on_pushButton_14_clicked(){ // Mutal Followers
     QString text = ui->plainTextEdit->toPlainText();
     string x = text.toStdString();
     Graph g = Graph_Parse(x);
@@ -210,7 +210,7 @@ void MainWindow::on_pushButton_14_clicked(){ // Post Search
             output = "Mutual Friends for users of id " + user_1 + " & " + user_2 + " are: \n";
             for (int i : result)
             {
-                output += "        User of Id : " + g.users[i]->id + "\n";
+                output += "        User of Id: " + g.users[i]->id + ", Name: " + g.users[i]->name + "\n";
             }
         }
         else
