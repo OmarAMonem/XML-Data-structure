@@ -15,5 +15,24 @@ vector<int> get_suggested_users(int id, vector<vector<int>> adjacencyMatrix) {
     }
     sort(suggested_users.begin(), suggested_users.end());  //sorting the Vector
     suggested_users.erase(unique(suggested_users.begin(), suggested_users.end()), suggested_users.end()); //removing the Duplicates From the Suggested Users
-    return suggested_users;
+    
+    for (int i = 0; i < suggested_users.size(); i++)
+    {
+        flag = 0;
+        for (int j = 0; j < followers.size(); j++)
+        {
+            if (suggested_users[i] == followers[j])
+            {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0)
+        {
+            result.push_back(suggested_users[i]);
+        }
+    }
+
+    return result;
+}
 }
